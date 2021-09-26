@@ -1,8 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-let items = ["Eat", "Code", "Sleep", "Repeat"];
-let workItems = [];
+//My very node module[date module i.e. date.js] that gives 
+//the current date:
+const date = require(__dirname + "/date.js");
+
+
+const items = ["Eat", "Code", "Sleep", "Repeat"];
+const workItems = [];
 
 const app = express();
 
@@ -15,16 +20,8 @@ app.use(express.static("public"));
 
 app.get("/", function(req, res){
 
-    let today = new Date();
-    
-    let options = {
-        weekday: "long",
-        day: "numeric",
-        month: "long"
-    };
+    let day = date.getDate();
 
-    let day = today.toLocaleDateString("en-US", options);
-    
     res.render("list", {listTitle: day, newListItem: items});
 
 });
