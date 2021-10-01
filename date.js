@@ -1,4 +1,5 @@
 //My Custom Module that is exported to app.js
+
 exports.getDate = function(){
     let today = new Date();
     
@@ -20,3 +21,4 @@ exports.getDay = function(){
 
     return today.toLocaleDateString("en-US", options);
 } 
+
